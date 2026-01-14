@@ -15,20 +15,23 @@ namespace WebApi.Controllers
         private readonly IDeleteUserService _deleteUserService;
         private readonly IGetUserService _getUserService;
         private readonly IUpdateUserService _updateUserService;
+        private readonly IGetUsersByTagService _getUsersByTagService;
 
-        public UserController(ICreateUserService createUserService, IDeleteUserService deleteUserService, IGetUserService getUserService, IUpdateUserService updateUserService)
+        public UserController(ICreateUserService createUserService, IDeleteUserService deleteUserService, IGetUserService getUserService, IUpdateUserService updateUserService,
+            IGetUsersByTagService getUsersByTagService)
         {
             _createUserService = createUserService;
             _deleteUserService = deleteUserService;
             _getUserService = getUserService;
             _updateUserService = updateUserService;
+            _getUsersByTagService = getUsersByTagService;
         }
 
         [Route("{userId:guid}/create")]
         [HttpPost]
-        public HttpResponseMessage CreateUser(Guid userId, [FromBody] UserModel model)
+        public HttpResponseMessage CreateUser([FromBody] UserModel model)
         {
-            var user = _createUserService.Create(userId, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
+            var user = _createUserService.Create(Guid.NewGuid(), model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
             return Found(new UserData(user));
         }
 
@@ -89,7 +92,11 @@ namespace WebApi.Controllers
         [HttpGet]
         public HttpResponseMessage GetUsersByTag(string tag)
         {
-            throw new NotImplementedException();
+            var users = _getUsersByTagService.GetUsersByTag(tag)
+                .Select(u => new UserData(u))
+                .ToList();
+
+            return Found(users);
         }
     }
 }

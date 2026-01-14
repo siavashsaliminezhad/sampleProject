@@ -51,6 +51,16 @@ namespace Data.Repositories
             }
             return query.ToList();
         }
+        public IEnumerable<User> GetByTag(string tag)
+        {
+            if (string.IsNullOrWhiteSpace(tag))
+                return Enumerable.Empty<User>();
+
+            return _documentSession.Advanced
+                .DocumentQuery<User, UsersListIndex>()
+                .WhereEquals("Tags", tag)
+                .ToList();
+        }
 
         public void DeleteAll()
         {

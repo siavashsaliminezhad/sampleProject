@@ -11,11 +11,11 @@ namespace WebApi.App_Start
     {
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            var container = GlobalConfiguration.Configuration.DependencyResolver;
             var method = actionExecutedContext.Request.Method;
             if (method == HttpMethod.Post || method == HttpMethod.Put || method == HttpMethod.Delete)
             {
-                var session = (IDocumentSession)container.GetService(typeof(IDocumentSession));
+                var scope = actionExecutedContext.Request.GetDependencyScope();
+                var session = (IDocumentSession)scope.GetService(typeof(IDocumentSession));
                 session.SaveChanges();
             }
         }
