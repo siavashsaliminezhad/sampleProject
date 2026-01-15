@@ -67,17 +67,28 @@ namespace WebApi.Controllers
             return Found(items);
         }
 
-        [Route("{productId:guid}/update")]
-        [HttpPost]
+        [Route("{productId:guid}")]
+        [HttpPut]
         public HttpResponseMessage Update(Guid productId, [FromBody] ProductModel model)
         {
             if (model == null)
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Body is required.");
+                return Request.CreateErrorResponse(
+                    HttpStatusCode.BadRequest,
+                    "Body is required."
+                );
 
             var product = _get.Get(productId);
-            if (product == null) return DoesNotExist();
+            if (product == null)
+                return DoesNotExist();
 
-            _update.Update(product, model.Name, model.Sku, model.Price, model.IsActive);
+            _update.Update(
+                product,
+                model.Name,
+                model.Sku,
+                model.Price,
+                model.IsActive
+            );
+
             return Found(new ProductData(product));
         }
 

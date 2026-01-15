@@ -75,25 +75,41 @@ namespace WebApi.Controllers
             return Found(orders);
         }
 
-        [Route("{orderId:guid}/update")]
-        [HttpPost]
+        [Route("{orderId:guid}")]
+        [HttpPut]
         public HttpResponseMessage Update(Guid orderId, [FromBody] OrderModel model)
         {
             if (model == null)
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Body is required.");
+                return Request.CreateErrorResponse(
+                    HttpStatusCode.BadRequest,
+                    "Body is required."
+                );
 
             var order = _get.Get(orderId);
-            if (order == null) return DoesNotExist();
+            if (order == null)
+                return DoesNotExist();
 
             try
             {
-                var linesTuple = model.Lines == null ? null : model.Lines.Select(l => (l.ProductId, l.Quantity));
-                _update.Update(order, model.CustomerId, model.Status, linesTuple);
+                var lines = model.Lines == null
+                    ? null
+                    : model.Lines.Select(l => (l.ProductId, l.Quantity));
+
+                _update.Update(
+                    order,
+                    model.CustomerId,
+                    model.Status,
+                    lines
+                );
+
                 return Found(new OrderData(order));
             }
             catch (ArgumentException ex)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+                return Request.CreateErrorResponse(
+                    HttpStatusCode.BadRequest,
+                    ex.Message
+                );
             }
         }
 
