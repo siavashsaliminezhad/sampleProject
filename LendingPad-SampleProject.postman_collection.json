@@ -1,290 +1,539 @@
 {
-	"info": {
-		"_postman_id": "26c5397e-2163-4643-ae23-13c5eb581e25",
-		"name": "LendingPad-SampleProject",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30292534"
-	},
-	"item": [
-		{
-			"name": "Initialize Sample Data",
-			"item": [
-				{
-					"name": "Clear Users",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:49834/users/clear",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"clear"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User - John",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 27,\r\n    \"annualSalary\": 72000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:49834/users/1422740e-6426-4c46-8445-3f5274a62424/create",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"1422740e-6426-4c46-8445-3f5274a62424",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User - Mark",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 35,\r\n    \"annualSalary\": 120000,\r\n    \"tags\": [\"b\", \"c\", \"e\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/create",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"9422740e-6426-4c46-8445-3f5274a62424",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User - Andy",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Andy\",\r\n    \"email\": \"andy@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 34,\r\n    \"annualSalary\": 86000,\r\n    \"tags\": [\"D\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:49834/users/8722740e-6426-4c46-8445-3f5274a62424/create",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"8722740e-6426-4c46-8445-3f5274a62424",
-								"create"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Tasks",
-			"item": [
-				{
-					"name": "Create User",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "//The exception \"PUT attempted on document 'users/1422740e-6426-4c46-8445-3f5274a62424' using a non current etag\" means that the record with the same ID already exists.\r\n{\r\n    \"name\": \"Mary\",\r\n    \"email\": \"mary@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": []\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:49834/users/1422740e-6426-4c46-8445-3f5274a62424/create",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"1422740e-6426-4c46-8445-3f5274a62424",
-								"create"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User - A",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mark Williams (updated)\",\r\n    \"email\": null,\r\n    \"type\": 2,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"9422740e-6426-4c46-8445-3f5274a62424",
-								"update"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User - B",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": null,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"9422740e-6426-4c46-8445-3f5274a62424",
-								"update"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update User - C",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 152000,\r\n    \"tags\": null\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"9422740e-6426-4c46-8445-3f5274a62424",
-								"update"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Users By Tag",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:49834/users/list/tag?tag=C",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "49834",
-							"path": [
-								"users",
-								"list",
-								"tag"
-							],
-							"query": [
-								{
-									"key": "tag",
-									"value": "C"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Requests",
-			"item": [
-				{
-					"name": "Products",
-					"item": []
-				},
-				{
-					"name": "Orders",
-					"item": []
-				}
-			]
-		}
-	]
+  "info": {
+    "_postman_id": "5af97a60-88c6-456d-b5d8-9c90e927daf3",
+    "name": "LendingPad-SampleProject",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Initialize Sample Data",
+      "item": [
+        {
+          "name": "Clear Users",
+          "id": "ef0774df-2c17-41d7-8657-4e2585792468",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:49834/users/clear",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "clear"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create User - John",
+          "id": "8583bd13-a841-45a1-b987-d07b8af07992",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 27,\r\n    \"annualSalary\": 72000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:49834/users/1422740e-6426-4c46-8445-3f5274a62424/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "1422740e-6426-4c46-8445-3f5274a62424",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create User - Mark",
+          "id": "9f00213a-39bd-4a1c-91b2-42548713a7c9",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 35,\r\n    \"annualSalary\": 120000,\r\n    \"tags\": [\"b\", \"c\", \"e\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "9422740e-6426-4c46-8445-3f5274a62424",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create User - Andy",
+          "id": "b988b769-9004-47ee-83e7-efbf72383b5b",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Andy\",\r\n    \"email\": \"andy@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 34,\r\n    \"annualSalary\": 86000,\r\n    \"tags\": [\"D\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:49834/users/8722740e-6426-4c46-8445-3f5274a62424/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "8722740e-6426-4c46-8445-3f5274a62424",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "56e1fee6-1fd2-4bce-93fb-4969911188db"
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "Create User",
+          "id": "791bdf7a-e0dc-4b0b-804f-70fc1a6d1c75",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "//The exception \"PUT attempted on document 'users/1422740e-6426-4c46-8445-3f5274a62424' using a non current etag\" means that the record with the same ID already exists.\r\n{\r\n    \"name\": \"Mary\",\r\n    \"email\": \"mary@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:49834/users/1422740e-6426-4c46-8445-3f5274a62424/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "1422740e-6426-4c46-8445-3f5274a62424",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User - A",
+          "id": "5768222f-e2cd-4584-a9ea-a0d19303620d",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mark Williams (updated)\",\r\n    \"email\": null,\r\n    \"type\": 2,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "9422740e-6426-4c46-8445-3f5274a62424",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User - B",
+          "id": "dc2c10ec-3558-431a-830c-5d5402cdec99",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": null,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "9422740e-6426-4c46-8445-3f5274a62424",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User - C",
+          "id": "0383520d-1831-4c2d-83c5-b8cf5a04c652",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 152000,\r\n    \"tags\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "9422740e-6426-4c46-8445-3f5274a62424",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users By Tag",
+          "id": "ff08c1f9-98a1-48a7-b895-2810c7275e65",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:49834/users/list/tag?tag=C",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "49834",
+              "path": [
+                "users",
+                "list",
+                "tag"
+              ],
+              "query": [
+                {
+                  "key": "tag",
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "aea2f258-508e-4a1d-be63-a14614e037ef"
+    },
+    {
+      "name": "Requests",
+      "item": [
+        {
+          "name": "Products",
+          "item": [
+            {
+              "name": "Create Product",
+              "id": "250250af-9708-4cc4-af6f-bac711e57bc5",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"sku\": \"SKU-1001\",\r\n  \"name\": \"Keyboard\",\r\n  \"price\": 49.99,\r\n  \"isActive\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:49834/products/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "products",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Product",
+              "id": "7ad2a276-3492-45f1-a501-2daea5f14643",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"sku\": \"SKU-1001\",\r\n  \"name\": \"Mechanical Keyboard\",\r\n  \"price\": 69.99,\r\n  \"isActive\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:49834/products/afc50273-a81c-4453-9321-ddc9b59f0342",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "products",
+                    "afc50273-a81c-4453-9321-ddc9b59f0342"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Product",
+              "id": "3683a137-e519-4a2f-93f1-2e6cbc94458f",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:49834/products/9a4d0330-efd0-46c4-9d22-af15c9c932ce",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "products",
+                    "9a4d0330-efd0-46c4-9d22-af15c9c932ce"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Product List",
+              "id": "5259c764-2e7b-402c-8ecb-12c4ab4db20e",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:49834/products/list?sku=SKU-1001",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "products",
+                    "list"
+                  ],
+                  "query": [
+                    {
+                      "key": "sku",
+                      "value": "SKU-1001"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Product",
+              "id": "dd5d2290-ad66-4400-935d-997eabc620f9",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:49834/products/9a4d0330-efd0-46c4-9d22-af15c9c932ce",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "products",
+                    "9a4d0330-efd0-46c4-9d22-af15c9c932ce"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "863b4913-b336-4aa7-9a72-78d88269408c"
+        },
+        {
+          "name": "Orders",
+          "item": [
+            {
+              "name": "Create Order",
+              "id": "e007f9eb-cea3-481c-a578-ee0ec8316db1",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"customerId\": \"9a4d0330-efd0-46c4-9d22-af15c9c932ce\",\r\n  \"lines\": [\r\n    {\r\n      \"productId\": \"afc50273-a81c-4453-9321-ddc9b59f0342\",\r\n      \"quantity\": 2,\r\n      \"unitPrice\": 49.99\r\n    },\r\n    {\r\n      \"productId\": \"c28f97cd-44f6-4ed0-bc11-75e601525e74\",\r\n      \"quantity\": 1,\r\n      \"unitPrice\": 19.99\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:49834/orders/create",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "orders",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Order",
+              "id": "436aac0a-f059-43a0-9a7f-d9d654136f88",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:49834/orders/e693efb1-ff99-412a-a0d9-54bc3ac04cd8",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "orders",
+                    "e693efb1-ff99-412a-a0d9-54bc3ac04cd8"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Order List",
+              "id": "764c6fb5-b7bd-4fd7-94c8-4c46250dcaa6",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:49834/orders/list?customerId=9a4d0330-efd0-46c4-9d22-af15c9c932ce",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "orders",
+                    "list"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "9a4d0330-efd0-46c4-9d22-af15c9c932ce"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Order",
+              "id": "e3e0e8e5-e8e5-4e8e-8e8e-8e8e8e8e8e8e",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:49834/orders/e693efb1-ff99-412a-a0d9-54bc3ac04cd8",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "49834",
+                  "path": [
+                    "orders",
+                    "e693efb1-ff99-412a-a0d9-54bc3ac04cd8"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "e8e8e8e8-e8e8-4e8e-8e8e-8e8e8e8e8e8e"
+        }
+      ],
+      "id": "f8f8f8f8-f8f8-4f8f-8f8f-8f8f8f8f8f8f"
+    }
+  ]
 }
